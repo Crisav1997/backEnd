@@ -6,15 +6,14 @@ function suma(n1,n2){
             let verificarN2=esNumero(n2)
             console.log(verificarN2)
             if(verificarN1.number&&verificarN2.number){
-            let verificarSumaMayorCero=verificarN1.number+verificarN2.number//Sumo propiedades number de ambas funciones
+            let verificarSumaMayorCero=verificarN1.number+verificarN2.number
             if(verificarSumaMayorCero>0){
                 return resolve (verificarSumaMayorCero)
             }else{
                 return reject({
                     error3:"La suma da negativo"
                 })
-            }
-            
+            }   
         }else{
                 return reject({
                     n1: verificarN1.message ?? "el numero esta correcto", 
@@ -40,8 +39,6 @@ async function calculos(num1,num2,operacion){
         return error
     }
 }
-
-
 function esNumero(num){
     if (isNaN(num)) {
         let message = 'Solo números'
@@ -53,9 +50,6 @@ function esNumero(num){
         return { success: true, number: num }
     }
 }
-
-
-
 function resta(n1,n2){
     return new Promise(
         (resolve,reject)=>{
@@ -81,4 +75,53 @@ function resta(n1,n2){
     )
 
 }
-calculos("hola",3,resta)
+function multiplicar(n1,n2){
+    return new Promise(
+        (resolve,reject)=>{
+            let verificarN1=esNumero(n1)
+            let verificarN2=esNumero(n2)
+            if(verificarN1.number && verificarN2.number){
+                let resultado=verificarN1.number * verificarN2.number
+                if(resultado>0){
+                    return resolve(resultado)
+                }else{
+                    return reject({
+                        error: "la calculadora solo da  valores positivos"
+                })
+                }
+            }else{
+                return reject({
+                    n1: verificarN1.message ?? "el numero esta correcto", 
+                    n2 : verificarN2.message ?? "el numero esta correcto"
+                })
+            }
+        }
+    )
+}
+function dividir(n1,n2){
+    return new Promise(
+        (resolve,reject)=>{
+            let verificarN1=esNumero(n1)
+            let verificarN2=esNumero(n2)
+            if(verificarN1.number && verificarN2.number){
+                let resultado=verificarN1.number / verificarN2.number
+                if(resultado>0){
+                    return resolve(resultado)
+                }else{
+                    return reject({
+                        error: "la calculadora solo da  valores positivos"
+                })
+                }
+            }else{
+                return reject({
+                    n1: verificarN1.message ?? "el numero esta correcto", 
+                    n2 : verificarN2.message ?? "el numero esta correcto"
+                })
+            }
+        }
+    )
+}
+
+
+
+calculos(0,6,dividir)
