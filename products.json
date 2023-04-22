@@ -6,5 +6,21 @@
     "thumbnail": [],
     "stock": 0,
     "id": 1
+  },
+  {
+    "title": "probando",
+    "description": "borraz",
+    "price": 32,
+    "thumbnail": [],
+    "stock": 0,
+    "id": 2
+  },
+  {
+    "title": "igna",
+    "description": "borraz",
+    "price": 32,
+    "thumbnail": [],
+    "stock": 0,
+    "id": 3
   }
 ]
