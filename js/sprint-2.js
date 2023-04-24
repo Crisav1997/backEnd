@@ -6,7 +6,6 @@ class ProductManager{
         this.path=path
         this.init(path)
     }
-
     init(path){
         let file = fs.existsSync(path)
         if(!file){
@@ -21,19 +20,28 @@ class ProductManager{
     }
     async addProduct({title,description,price,thumbnail,stock}){
         try {
+            let flag=0;
             let data = { title,description,price,thumbnail,stock }
-           
-            if (this.products.length>0) {
-                let next_id = this.products[this.products.length-1].id+1
-                data.id = next_id
-            } else {
+            for(const value in data){
+                if(data[value]===""){
+                flag=1;} 
+                }
+            if(flag===0){
+                if (this.products.length>0) {
+                    let next_id = this.products[this.products.length-1].id+1
+                    data.id = next_id
+                } else {
                 data.id = 1
-            }
+                }
             this.products.push(data)
             let data_json = JSON.stringify(this.products,null,2)
             await fs.promises.writeFile(this.path,data_json)
             console.log('id´s created user: '+data.id)
             return 'id´s user: '+data.id
+        }else{
+            console.log('Campos incompletos')
+            return 'Campos Incompletos'
+        }
         } catch(error) {
             console.log(error)
             return 'error: creating user'
@@ -103,17 +111,23 @@ class ProductManager{
 }
 async function manager() {
     let manager = new ProductManager('./products.json')
-   // await manager.addProduct({ title:'igna',description:'borraz',price:32,thumbnail:[],stock:0 });
+    await manager.addProduct({ title:'Motor WEG',description:'90L,ATEX',price:3500,thumbnail:"123.jpg",stock:3 });
+    await manager.addProduct({ title:'Motor SEW',description:'132M',price:5000,thumbnail:"123.jpg",stock:2 });
+    await manager.addProduct({ title:'Motor Siemens',description:'90L , Zona 1',price:3400,thumbnail:"41",stock:0 });
+    await manager.addProduct({ title:'Reflector Delga',description:'150W',price:400,thumbnail:"41",stock:12 });
+    await manager.addProduct({ title:'Refletor Warom',description:'150W ATEX',price:600,thumbnail:"41",stock:10 });
+    await manager.addProduct({ title:'Artefacto Philips',description:'2x36W',price:100,thumbnail:"41",stock:20 });
+    await manager.addProduct({ title:'Plafon 600x600',description:'Tipo Oficina',price:120,thumbnail:"41",stock:0 });
+    await manager.addProduct({ title:'Prensa Cable M25',description:'Antiexplosivo',price:40,thumbnail:"41",stock:20 });
+    await manager.addProduct({ title:'Prensa Cable M20',description:'Antiexplosivo',price:30,thumbnail:"41",stock:5 });
+    await manager.addProduct({ title:'Prensa Cable 3/4 bsp',description:'Antiexplosivo',price:30,thumbnail:"41",stock:8 });
+
     await manager.getProducts()
-    //await manager.getProductById(1)
-   // await manager.addProduct({ title:'cris',description:'avila',price:12,thumbnail:[],stock:41})
-    // await manager.add_user({ name:'igna',last_name:'chapero',age:100,carts:[] })
-    // await manager.add_user({ name:'mario',last_name:'castro',age:35,carts:[] })
-    // await manager.add_user({ name:'luis',last_name:'aguilar',age:35,carts:[] })
-    //await manager.updateProduct(2,{ title:'probando' })
-    // await manager.update_user(2,{ name:'nicolas', carts: ['celular'] })
-    // await manager.update_user(3,{ age:30 })
-    //await manager.deleteProduct(2)
-    // await manager.deleteProduct(4)
+    await manager.getProductById(9)
+    await manager.updateProduct(9,{ title:'Prensa Cable 1/2 bsp' })
+    await manager.deleteProduct(10)
+    await manager.getProducts()
+
+   
 }
 manager()
