@@ -1,0 +1,98 @@
+[
+  {
+    "title": "igna",
+    "description": "borraz",
+    "price": 32,
+    "thumbnail": [],
+    "stock": 0,
+    "id": 1
+  },
+  {
+    "title": "probando",
+    "description": "borraz",
+    "price": 32,
+    "thumbnail": [],
+    "stock": 0,
+    "id": 2
+  },
+  {
+    "title": "igna",
+    "description": "borraz",
+    "price": 32,
+    "thumbnail": [],
+    "stock": 0,
+    "id": 3
+  },
+  {
+    "title": "Motor WEG",
+    "description": "90L,ATEX",
+    "price": 3500,
+    "thumbnail": "123.jpg",
+    "stock": 3,
+    "id": 4
+  },
+  {
+    "title": "Motor SEW",
+    "description": "132M",
+    "price": 5000,
+    "thumbnail": "123.jpg",
+    "stock": 2,
+    "id": 5
+  },
+  {
+    "title": "Motor Siemens",
+    "description": "90L , Zona 1",
+    "price": 3400,
+    "thumbnail": "41",
+    "stock": 0,
+    "id": 6
+  },
+  {
+    "title": "Reflector Delga",
+    "description": "150W",
+    "price": 400,
+    "thumbnail": "41",
+    "stock": 12,
+    "id": 7
+  },
+  {
+    "title": "Refletor Warom",
+    "description": "150W ATEX",
+    "price": 600,
+    "thumbnail": "41",
+    "stock": 10,
+    "id": 8
+  },
+  {
+    "title": "Prensa Cable 1/2 bsp",
+    "description": "2x36W",
+    "price": 100,
+    "thumbnail": "41",
+    "stock": 20,
+    "id": 9
+  },
+  {
+    "title": "Prensa Cable M25",
+    "description": "Antiexplosivo",
+    "price": 40,
+    "thumbnail": "41",
+    "stock": 20,
+    "id": 11
+  },
+  {
+    "title": "Prensa Cable M20",
+    "description": "Antiexplosivo",
+    "price": 30,
+    "thumbnail": "41",
+    "stock": 5,
+    "id": 12
+  },
+  {
+    "title": "Prensa Cable 3/4 bsp",
+    "description": "Antiexplosivo",
+    "price": 30,
+    "thumbnail": "41",
+    "stock": 8,
+    "id": 13
+  }
+]
