@@ -1,4 +1,4 @@
-const fs = require('fs')
+import fs from "fs"
 
 class ProductManager{
     constructor(path){
@@ -108,9 +108,10 @@ class ProductManager{
         }
     }
     
-}
-async function manager() {
-    let manager = new ProductManager('./products.json')
+}  
+let manager = new ProductManager('./products.json')
+async function manage() {
+  
     await manager.addProduct({ title:'Motor WEG',description:'90L,ATEX',price:3500,thumbnail:"123.jpg",stock:3 });
     await manager.addProduct({ title:'Motor SEW',description:'132M',price:5000,thumbnail:"123.jpg",stock:2 });
     await manager.addProduct({ title:'Motor Siemens',description:'90L , Zona 1',price:3400,thumbnail:"41",stock:0 });
@@ -130,4 +131,6 @@ async function manager() {
 
    
 }
-manager()
+//manager()
+
+export default manager
