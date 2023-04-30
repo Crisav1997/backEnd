@@ -1,5 +1,6 @@
-import express from 'express'
+import express, { response } from 'express'
 import manager from "./js/sprint-2.js"
+import cart from "./js/carts.js"
 
 const server = express()
 
@@ -73,3 +74,37 @@ let id_function=(req,res)=>{
 }
 
 server.get(id_route,id_function)
+
+let cart_route="/api/carts"
+let cart_function=(req,res)=>{
+    let carrito= cart.getCarts()
+    console.log(carrito)
+    return res.send({
+        succes:true,
+        response:carrito
+
+    })
+
+}
+server.get(cart_route,cart_function)
+
+let cid_route= "/api/carts/:cid"
+let cid_function=(req,res)=>{
+    let parametros = req.params
+    let id = Number(parametros.cid)
+    let one=cart.getCartsById(id)
+    console.log(one)
+    if(one){
+        return res.send({
+            succes: true,
+            user : one
+        })
+    }else{
+        return res.send({
+            succes: false,
+            user : "not found"
+        })
+    }
+}
+
+server.get(cid_route,cid_function)
