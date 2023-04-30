@@ -47,28 +47,18 @@ class ProductManager{
             return 'error: creating user'
         }
     }
-    async getProducts() {
-        try{
-           if(this.products.length){
-            return this.products
-           }else{
-            return 'Not found' 
-           }     
-        }catch(error){
-            return 'getProducts:error'
-        }  
+    getProducts() {
+        
+        return this.products
     }
-    async getProductById(id) {
-        try{
+    getProductById(id) {
         let search = this.products.find(each=>each.id===id)
         if(search){
             return search
         }else{
             return "Not found"
-        }}
-        catch(error){
-            return 'getProductById: error'
         }
+        
     }
     async updateProduct(id,data) {
         try {
@@ -109,7 +99,7 @@ class ProductManager{
     }
     
 }  
-let manager = new ProductManager('./products.json')
+let manager = new ProductManager('./data/products.json')
 async function manage() {
   
     await manager.addProduct({ title:'Motor WEG',description:'90L,ATEX',price:3500,thumbnail:"123.jpg",stock:3 });
@@ -131,6 +121,6 @@ async function manage() {
 
    
 }
-//manager()
+//manage()
 
 export default manager
