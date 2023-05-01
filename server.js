@@ -11,8 +11,6 @@ server.listen(PORT,ready)
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
 
-
-//FUNCIONA -en ruta "/" , lee cuantos usuarios hay cargados
 let index_route ="/"
 let index_function =(req,res)=>{
     let products= manager.getProducts().length

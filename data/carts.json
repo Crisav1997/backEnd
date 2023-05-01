@@ -1,27 +1,51 @@
 [
   {
-    "pid": 5,
-    "quantity": 5,
+    "products": [
+      5,
+      5
+    ],
     "id": 1
   },
   {
-    "pid": 5,
-    "quantity": 5,
+    "products": [
+      5,
+      5
+    ],
     "id": 2
   },
   {
-    "pid": 5,
-    "quantity": 5,
+    "products": [
+      5,
+      5
+    ],
     "id": 3
   },
   {
-    "pid": 5,
-    "quantity": 5,
+    "products": [
+      5,
+      5
+    ],
     "id": 4
   },
   {
-    "pid": 5,
-    "quantity": 5,
+    "products": [
+      5,
+      5
+    ],
     "id": 5
+  },
+  {
+    "products": [
+      5,
+      5
+    ],
+    "id": 6
+  },
+  {
+    "products": [
+      5,
+      5
+    ],
+    "id": 7
   }
 ]

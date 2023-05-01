@@ -14,16 +14,16 @@ class CartManager{
                 return 'file created at path: '+this.path
         }else{
             this.carts = JSON.parse(fs.readFileSync(path,'UTF-8'))
-            console.log('recuperando')
-            return 'data recovered'
+            return 'data cart recovered'
         }
     }
     async addCart({pid,quantity}){
         try {
             let flag=0;
-            let data = {pid,quantity}
+            let products=[pid,quantity]
+            let data = {products}
             for(const value in data){
-                if(data[value]===""){
+                if(data[value]===null){
                 flag=1;} 
                 }
             if(flag===0){
@@ -32,24 +32,22 @@ class CartManager{
                     console.log(next_id)
                     data.id = next_id
                 } else {
-                data.id = 1
+                    data.id = 1
                 }
             this.carts.push(data)
             let data_json = JSON.stringify(this.carts,null,2)
             await fs.promises.writeFile(this.path,data_json)
-            console.log('id´s created user: '+data.id)
-            return 'id´s user: '+data.id
+            return 'id´s cart: '+data.id
         }else{
-            console.log('Campos incompletos')
             return 'Campos Incompletos'
         }
         } catch(error) {
             console.log(error)
-            return 'error: creating user'
+            return 'addCart: error'
         }
     }
-    getCarts() {
-        console.log(this.carts)
+     getCarts() {
+         console.log(this.carts)
         return this.carts
     }
     getCartsById(id) {
@@ -66,9 +64,9 @@ class CartManager{
 }
 let cart =new CartManager('./data/carts.json')
 async function carrito(){
-    //await cart.addCart({pid:5,quantity:5})
-    await cart.getCarts()
-    await cart.getCartsById(2)
+    await cart.addCart({pid:5,quantity:5})
+    //await cart.getCarts()
+   // await cart.getCartsById(2)
 }
 //carrito()
 
