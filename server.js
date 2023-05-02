@@ -70,7 +70,6 @@ let id_function=(req,res)=>{
         })
     }
 }
-
 server.get(id_route,id_function)
 
 let cart_route="/api/carts"
@@ -104,5 +103,4 @@ let cid_function=(req,res)=>{
         })
     }
 }
-
 server.get(cid_route,cid_function)
