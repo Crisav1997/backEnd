@@ -3,7 +3,6 @@ import manager from "./js/sprint-2.js"
 import cart from "./js/carts.js"
 
 const server = express()
-
 const PORT = 8080
 const ready = ()=> console.log('server ready on port '+PORT)
 
@@ -104,3 +103,57 @@ let cid_function=(req,res)=>{
     }
 }
 server.get(cid_route,cid_function)
+
+server.post(
+    '/products',
+   async (req,res)=>{
+    try{
+        let title= req.body.title ?? null
+        let description=req.body.description ?? null
+        let price =req.body.price ?? 0
+        let thumbnail = req.body.thumbnail ?? []
+        let stock = req.body.stock ?? 0
+        console.log(title)
+        if(title&&description&&price){
+            let user= await manager.addProduct({title,description,price,thumbnail,stock})
+            return res.json({
+                status: 201,
+                user_id:user.id,
+                message: 'created!'
+            })
+        }else{
+            return res.json({
+                status: 400,
+                message:'check data!'
+            })
+        }
+    }catch(error){
+        return res.json({
+            status:500,
+            message: 'error'
+        })
+    }
+    }
+)
+
+server.put(
+    '/products/:uid',
+    (req,res)=>{
+        if(req.params.uid&&req.body){
+        let id =Number(req.params.uid)
+        let data=req.body
+        manager.updateProduct(id,data)
+        return res.json({
+            status:200,
+            message:"update user"
+        })
+        }else{
+            return res.json({
+                status:400,
+                message: "checkdata!"
+            })
+
+        }
+        
+    }
+)

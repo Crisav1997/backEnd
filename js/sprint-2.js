@@ -50,7 +50,7 @@ class ProductManager{
         }
     }
     getProducts() {
-        return this.carts
+        return this.products
     }
     getProductById(id) {
         let search = this.products.find(each=>each.id===id)
