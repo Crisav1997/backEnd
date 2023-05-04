@@ -1,0 +1,12 @@
+<h1>Hola</h1>
+<h2>como estas {{name}}</h2>
+
+{{#if last_name}}
+<h2>{{last_name}}</h2>
+{{else}}
+<h2>aca deberia haber un apelllido si existe</h2>
+{{/if}}
+
+{{#each alumnos}}
+<p>{{this}}</p>
+{{/each}}

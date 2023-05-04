@@ -1,6 +1,10 @@
 import express, { response } from 'express'
 import manager from "./js/sprint-2.js"
 import cart from "./js/carts.js"
+//Clase8
+import { Engine } from 'express-handlebars/types/index.js'
+import { __dirname } from './utils.js'
+
 
 const server = express()
 const PORT = 8080
@@ -9,6 +13,10 @@ const ready = ()=> console.log('server ready on port '+PORT)
 server.listen(PORT,ready)
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
+//Clase8
+server.engine('handlebars',engine())
+server.set("view engine","handlebars")
+server.set("views",__dirname+'/views')//dirname se configura manual en utilks
 
 let index_route ="/"
 let index_function =(req,res)=>{
