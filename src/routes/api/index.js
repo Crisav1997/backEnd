@@ -1,1 +1,0 @@
-//llama a recursos
