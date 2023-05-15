@@ -49,22 +49,22 @@ class CartManager{
         }
         
     }
-    // async update_cart(idC,idP,units) {
-    //     try {
-    //         let one = this.getCart(idC)
-    //         let product=idP
-    //         console.log(one)
-    //         let search=this.products.find(each=>each.product===id)
-    //         console.log(search)
-    //         //  let data_json = JSON.stringify(this.carts,null,2)
-    //         //  await fs.promises.writeFile(this.path,data_json)
-    //         //  console.log('updated cart: '+id)
-    //         return 200
-    //     } catch(error) {
+     async update_cart(idC,idP,units) {
+         try {
+            let data={idP,units}
+            let one = this.getCart(idC)
+            one.products.push(data)
+            console.log(one.products)
+            
+             let data_json = JSON.stringify(this.carts,null,2)
+             await fs.promises.writeFile(this.path,data_json)
+             console.log('updated cart: '+id)
+            return 200
+         } catch(error) {
     //         console.log(error)
     //         return null
-    //     }
-    // }
+       }
+     }
     async destroy_cart(id) {
         try {
             let one = this.carts.find(each=>each.id===id)
