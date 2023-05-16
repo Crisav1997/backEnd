@@ -1,12 +1,21 @@
-<h1>Hola</h1>
+{{!-- <h1>Hola</h1>
 <h2>como estas {{name}}</h2>
 
 {{#if last_name}}
 <h2>{{last_name}}</h2>
 {{else}}
 <h2>aca deberia haber un apelllido si existe</h2>
-{{/if}}
-
+{{/if}} --}}
+<h1 class="text-center mt-4">Nuestro Productos</h1>
+<div class="d-flex justify-content-around mt-4">
 {{#each alumnos}}
-<p>{{this}}</p>
+<div class="card  " style="width: 18rem;">
+  <img src={{this.img}} class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.description}}</p>
+    <a href="#" class="btn btn-primary">Mas Informacion</a>
+  </div>
+</div>
 {{/each}}
+</div>
