@@ -1,8 +1,7 @@
 import express, { response } from 'express'
 import error_handler from './middlewares/error_handler.js'
 import not_found_handler from './middlewares/not_found_handler.js'
-
-//import { Engine } from 'express-handlebars/types/index.js'
+import { engine } from 'express-handlebars'
 import { __dirname } from './utils.js'
 import router from './router/index.js'
 
@@ -19,10 +18,9 @@ server.use('/',router)
 server.use(error_handler)
 server.use(not_found_handler)
 //Clase8
-//server.engine('handlebars',Engine())
-//server.set("view engine","handlebars")
-//server.set("views",__dirname+'/views')//dirname se configura manual en utilks
-
+server.engine('handlebars',engine())
+server.set('view engine','handlebars')
+server.set('views',__dirname+'/views')
 
 let cart_route="/api/carts"
 let cart_function=(req,res)=>{
