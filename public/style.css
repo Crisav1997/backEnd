@@ -1,0 +1,10 @@
+img{
+    object-fit: cover;
+}
+
+.bgHeader{
+    background-image: linear-gradient(lightblue, black);
+}
+.bgMain{
+    background-image: radial-gradient(white, lightblue);
+}
