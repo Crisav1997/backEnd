@@ -39,30 +39,36 @@ class CartManager{
      getCarts() {
         return this.carts
     }
-    getCart(id) {
-        let search = this.carts.find(each=>each.id===id)
+    getCart(idC) {
+        let search = this.carts.find(each=>each.idC===idC)
         if(search){
             console.log(search)
             return search
-        }else{
-            return "Not found"
-        }
+         }else{
+             return "Not found"
+            }
         
     }
      async update_cart(idC,idP,units) {
          try {
             let data={idP,units}
-            let one = this.getCart(idC)
-            one.products.push(data)
-            console.log(one.products)
+            let one = await this.getCart(idC)
             
+            if(one==="Not found"){ //Nuevo
+                this.carts.push({idC,productos:[{idP,units}]})
+            }
+             else{ //Actualizar
+                 for(let prop in data){
+                    one.productos[prop]= data[prop]
+                 }
+             }
              let data_json = JSON.stringify(this.carts,null,2)
-             await fs.promises.writeFile(this.path,data_json)
-             console.log('updated cart: '+id)
-            return 200
+                await fs.promises.writeFile(this.path,data_json)
+                console.log('updated cart: '+ idC)
+                return 200
          } catch(error) {
-    //         console.log(error)
-    //         return null
+             console.log(error)
+             return null
        }
      }
     async destroy_cart(id) {
