@@ -1,6 +1,9 @@
 import { Router} from "express";
 import manager from "../../managers/Carts.js";
+import productManager from "../../managers/Product.js"
+import { Console } from "console";
 const router = Router()
+
 
 router.get('/',
 (req,res,next)=>{
@@ -51,6 +54,12 @@ router.put('/:cid/product/:pid/:units', async(req,res,next)=> {
       let idP = Number(req.params.pid)
       let idC = Number(req.params.cid)
       let units= Number(req.params.units)
+      let product= productManager.getProductById(idP)
+      
+     if(units<product.stock){units=units}
+     else{units=product.stock}
+     console.log (units)
+        
       let response = await manager.update_cart(idC,idP,units)
       if (response===200) {
           return res.json({ status:200,message:'cart updated'})

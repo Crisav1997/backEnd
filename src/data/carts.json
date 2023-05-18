@@ -1,27 +1,27 @@
 [
   {
-    "products": [
+    "idC": 1,
+    "productos": [
       {
-        "idP": 2,
-        "units": 3
-      },
-      {
-        "idP": 2,
-        "units": 3
+        "idP": 4,
+        "units": 1
       }
-    ],
-    "id": 1
+    ]
   },
   {
-    "products": [],
-    "id": 2
+    "idC": 2,
+    "productos": [
+      {
+        "idP": 4,
+        "units": 1
+      }
+    ]
   },
   {
-    "products": [],
-    "id": 3
-  },
-  {
-    "products": [],
-    "id": 4
+    "idC": 3,
+    "productos": {
+      "idP": 1,
+      "units": 3
+    }
   }
 ]
