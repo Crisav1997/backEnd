@@ -49,44 +49,81 @@ class CartManager{
             }
         
     }
+
      async update_cart(idC,idP,units) {
          try {
             let data={idP,units}
             let one = await this.getCart(idC)
-            
-            if(one==="Not found"){ //Nuevo
+            //Carrito nuevo
+            if(one==="Not found"){ 
                 this.carts.push({idC,productos:[{idP,units}]})
             }
              else{ //Actualizar
+                const found= one.productos.find(e=>e.idP===idP)
+                if(found){
                  for(let prop in data){
-                    one.productos[prop]= data[prop]
+                    found[prop]= data[prop]
                  }
+                 console.log(found)
+             }else{
+                one.productos.push(data)
              }
              let data_json = JSON.stringify(this.carts,null,2)
                 await fs.promises.writeFile(this.path,data_json)
                 console.log('updated cart: '+ idC)
                 return 200
-         } catch(error) {
+         }} catch(error) {
              console.log(error)
              return null
        }
      }
-    async destroy_cart(id) {
+    async destroy_cart(idC,idP,units) {
         try {
-            let one = this.carts.find(each=>each.id===id)
-            if (one) {
-                this.carts = this.carts.filter(each=>each.id!==id)
-                let data_json = JSON.stringify(this.carts,null,2)
-                await fs.promises.writeFile(this.path,data_json)
-                console.log('delete cart: '+id)
-                return 200
+            let data={idP,units}
+            let one = await this.getCart(idC)
+            //Carrito nuevo
+            if(one==="Not found"){ 
+                return "No existe carrito"
             }
-            console.log('not found')
-            return null
-        } catch(error) {
-            console.log(error)
-            return null
-        }
+             else{ //Actualizar
+                const found= one.productos.find(e=>e.idP===idP)
+
+                
+                 if(found){
+                    console.log("hau")
+                    console.log(found[units])
+                //  for(let prop in data){
+                //     found[prop]= data[prop]
+                //  }
+                 console.log(found)
+              }else{
+                console.log("NO HAY PRODUTOS")
+            //     one.productos.push(data)
+              }
+             let data_json = JSON.stringify(this.carts,null,2)
+                await fs.promises.writeFile(this.path,data_json)
+                console.log('updated cart: '+ idC)
+                return 200
+         }} catch(error) {
+             console.log(error)
+             return null
+       }
+
+        // try {
+        //     let one = this.carts.find(each=>each.id===id)
+        //     if (one) {
+        //         this.carts = this.carts.filter(each=>each.id!==id)
+        //         let data_json = JSON.stringify(this.carts,null,2)
+        //         await fs.promises.writeFile(this.path,data_json)
+        //         console.log('delete cart: '+id)
+        //         return 200
+        //     }
+        //     console.log('not found')
+        //     return null
+        // } catch(error) {
+        //     console.log(error)
+        //     return null
+        // }
     }
 
 }

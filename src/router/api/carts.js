@@ -56,7 +56,7 @@ router.put('/:cid/product/:pid/:units', async(req,res,next)=> {
       let units= Number(req.params.units)
       let product= productManager.getProductById(idP)
       
-     if(units<product.stock){units=units}
+     if(units < product.stock){units}
      else{units=product.stock}
      console.log (units)
         
@@ -68,6 +68,21 @@ router.put('/:cid/product/:pid/:units', async(req,res,next)=> {
   } catch(error) {
       next(error)
   }
+})
+
+router.delete('/:cid/product/:pid/:units', async(req,res,next)=> {
+    try {
+        let idP = Number(req.params.pid)
+        let idC = Number(req.params.cid)
+        let units= Number(req.params.units)
+        let response = await manager.destroy_cart(idC,idP,units)
+        if (response===200) {
+            return res.json({ status:200,message:'cart deleted'})
+        }
+        return res.json({ status:404,message:'not found'})
+    } catch(error) {
+        next(error)
+    }
 })
 
 
