@@ -4,7 +4,15 @@
     "productos": [
       {
         "idP": 1,
-        "units": 10
+        "units": 0
+      },
+      {
+        "idP": 4,
+        "units": 2
+      },
+      {
+        "idP": 3,
+        "units": 60
       }
     ]
   },
@@ -18,6 +26,15 @@
       {
         "idP": 1,
         "units": 10
+      }
+    ]
+  },
+  {
+    "idC": 3,
+    "productos": [
+      {
+        "idP": 4,
+        "units": 2
       }
     ]
   }

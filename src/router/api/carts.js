@@ -55,6 +55,11 @@ router.put('/:cid/product/:pid/:units', async(req,res,next)=> {
       let idC = Number(req.params.cid)
       let units= Number(req.params.units)
       let product= productManager.getProductById(idP)
+      let stockNow=(product.stock-units)
+      if(stockNow>0)stockNow
+      else{stockNow=0}
+      
+      let data={"stock":stockNow}
       
      if(units < product.stock){units}
      else{units=product.stock}
@@ -62,7 +67,9 @@ router.put('/:cid/product/:pid/:units', async(req,res,next)=> {
         
       let response = await manager.update_cart(idC,idP,units)
       if (response===200) {
+          productManager.updateProduct(idP,data)
           return res.json({ status:200,message:'cart updated'})
+        
       }
       return res.json({ status:404,message:'not found'})
   } catch(error) {
@@ -75,8 +82,20 @@ router.delete('/:cid/product/:pid/:units', async(req,res,next)=> {
         let idP = Number(req.params.pid)
         let idC = Number(req.params.cid)
         let units= Number(req.params.units)
+        let product= productManager.getProductById(idP)
+        let one = await manager.getCart(idC)
+        const found=  one.productos.find(e=>e.idP===idP)
+        console.log("esto es")
+        console.log(found.units)
+        let stockNow= (found.units-units)
+         if(stockNow>0){
+         stockNow=(product.stock+units)}
+         else{stockNow=0}
+         console.log(stockNow)
+         let data={"stock":stockNow}
         let response = await manager.destroy_cart(idC,idP,units)
         if (response===200) {
+            productManager.updateProduct(idP,data)
             return res.json({ status:200,message:'cart deleted'})
         }
         return res.json({ status:404,message:'not found'})
