@@ -1,0 +1,41 @@
+[
+  {
+    "idC": 1,
+    "productos": [
+      {
+        "idP": 1,
+        "units": 0
+      },
+      {
+        "idP": 4,
+        "units": 2
+      },
+      {
+        "idP": 3,
+        "units": 60
+      }
+    ]
+  },
+  {
+    "idC": 2,
+    "productos": [
+      {
+        "idP": 2,
+        "units": 10
+      },
+      {
+        "idP": 1,
+        "units": 10
+      }
+    ]
+  },
+  {
+    "idC": 3,
+    "productos": [
+      {
+        "idP": 4,
+        "units": 2
+      }
+    ]
+  }
+]
