@@ -3,8 +3,8 @@
     "idC": 1,
     "productos": [
       {
-        "idP": 4,
-        "units": 1
+        "idP": 1,
+        "units": 3
       }
     ]
   },
@@ -12,16 +12,18 @@
     "idC": 2,
     "productos": [
       {
-        "idP": 4,
-        "units": 1
+        "idP": 1,
+        "units": 2
       }
     ]
   },
   {
     "idC": 3,
-    "productos": {
-      "idP": 1,
-      "units": 3
-    }
+    "productos": [
+      {
+        "idP": 4,
+        "units": 2
+      }
+    ]
   }
 ]

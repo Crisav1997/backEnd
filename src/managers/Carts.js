@@ -45,7 +45,7 @@ class CartManager{
             console.log(search)
             return search
          }else{
-             return "Not found"
+             return 1
             }
         
     }
@@ -53,15 +53,16 @@ class CartManager{
          try {
             let data={idP,units}
             let one = await this.getCart(idC)
-            
-            if(one==="Not found"){ //Nuevo
+            if(one===1){ //Nuevo
                 this.carts.push({idC,productos:[{idP,units}]})
             }
-             else{ //Actualizar
+             else{ 
+                console.log("acutalizar")
                  for(let prop in data){
                     one.productos[prop]= data[prop]
                  }
              }
+             console.log(this.carts)
              let data_json = JSON.stringify(this.carts,null,2)
                 await fs.promises.writeFile(this.path,data_json)
                 console.log('updated cart: '+ idC)

@@ -56,9 +56,9 @@ router.put('/:cid/product/:pid/:units', async(req,res,next)=> {
       let units= Number(req.params.units)
       let product= productManager.getProductById(idP)
       
-     if(units<product.stock){units=units}
-     else{units=product.stock}
-     console.log (units)
+       if(units<product.stock){units=units}
+      else{units=product.stock}
+      console.log (units)
         
       let response = await manager.update_cart(idC,idP,units)
       if (response===200) {
